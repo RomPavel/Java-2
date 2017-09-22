@@ -1,60 +1,30 @@
 import java.util.Scanner;
 
 public class Main {
-
-    public static void Cout(int[][] arr) {
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++)
-                System.out.print(arr[i][j] + " ");
-            System.out.println();
-        }
-
-    }
-
-    public static int Min(int[]arr) {
-
-        int pos=0;
-        int min=arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            if(arr[i]<=min){
-                min=arr[i];
-                pos=i;
-            }
-        }
-
-        return pos;
-    }
-
-
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
+        int n=0;
+        int m=0;
 
-        int n;
-        System.out.print("Enter n: ");
-        n = in.nextInt();
-        int[][] arr = new int[n][n];
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                arr[i][j] = in.nextInt();
-        //arr[i][j]=(int)(Math.random()*10);
+        System.out.print("Please, Enter the n & m: ");
 
-        //Cout(arr);
+        n=in.nextInt();
+        m=in.nextInt();
 
-        int min=Min(arr[0]);
-        boolean flag=false;
+        Matrix A = new Matrix(n, m);
 
-        for(int i=1; i<n; i++) {
-        if(min>Min(arr[i])) {
-            flag = true;
-            break;
-            }
-            min=Min(arr[i]);
-        }
+        System.out.println("Please, Enter your Matrix");
+        A.Cin(in);
 
-        if(flag==true) System.out.println("Sorry, but no(((");
-        else System.out.println("Yea, its good!");
+       // A.Cout();
+
+        System.out.println("Max_Length_Egual_Sequence in row: "+A.rowIneed());
+
+        System.out.println("Col_Local_Minimum: "+A.local_min());
+
+        A.change_matrix();
+        A.Cout();
 
     }
 }
